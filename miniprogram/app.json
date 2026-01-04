@@ -1,0 +1,98 @@
+{
+	"pages": [
+		"pages/home/home",
+		"pages/homeOrder/homeOrder",
+		"pages/scanQr/scanQr",
+		"pages/myQr/myQr",
+		"pages/me/me",
+		"pages/login/login",
+		"pages/myOrder/myOrder",
+		"pages/myOrderDetail/myOrderDetail",
+		"pages/myWallet/myWallet",
+		"pages/driverApply/driverApply",
+		"pages/driverOrder/driverOrder",
+		"pages/driverOrderDetail/driverOrderDetail",
+		"pages/driverWork/driverWork",
+		"pages/agreement/agreement"
+
+	],
+	"subpackages": [{
+		"root": "BackstagePackage",
+		"name": "backstagepackage",
+		"pages": [
+			"backstageHome/backstageHome",
+			"driverHome/driverHome",
+			"driverAuditList/driverAuditList",
+			"driverAudit/driverAudit",
+			"driverRepulse/driverRepulse",
+			"driverApprovedList/driverApprovedList",
+			"driverApproved/driverApproved",
+			"driverState/driverState",
+			"adminList/adminList",
+			"addAdmin/addAdmin",
+			"miniAppInfo/miniAppInfo",
+			"allOrderHome/allOrderHome",
+			"createOrder/createOrder",
+			"allLiveOrder/allLiveOrder",
+			"allLiveOrderDetail/allLiveOrderDetail",
+			"allDriverList/allDriverList",
+			"allDriverOrderList/allDriverOrderList",
+			"allDriverOrderDetail/allDriverOrderDetail",
+			"allHisOrder/allHisOrder",
+			"allHisOrderDetail/allHisOrderDetail"
+		]
+	}],
+	"window": {
+		"backgroundColor": "#F6F6F6",
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#F6F6F6",
+		"navigationBarTitleText": "代驾小程序",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#B0B0B0",
+		"selectedColor": "#000000",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "white",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"text": "代驾",
+				"iconPath": "pages/images/home.png",
+				"selectedIconPath": "pages/images/home_select.png"
+			},
+			{
+				"pagePath": "pages/me/me",
+				"text": "个人中心",
+				"iconPath": "pages/images/me.png",
+				"selectedIconPath": "pages/images/me_select.png"
+			}
+		]
+	},
+
+	"permission": {
+		"scope.userLocation": {
+			"desc": "申请授权位置信息"
+		},
+		"scope.userLocationBackground":{
+			"desc": "你是代驾司机，请选择：使用小程序时和离开后允许"
+		},
+		
+		"openapi": [
+			"wxacode.getUnlimited"
+		  ]
+	},
+	"requiredPrivateInfos": [
+		"getLocation",
+		"chooseLocation",
+		"startLocationUpdate", 
+		"startLocationUpdateBackground",
+		"onLocationChange"
+	],
+	"requiredBackgroundModes": [
+		"audio",
+		"location"
+	],
+	"sitemapLocation": "sitemap.json",
+	"lazyCodeLoading": "requiredComponents",
+	"style": "v2"
+}

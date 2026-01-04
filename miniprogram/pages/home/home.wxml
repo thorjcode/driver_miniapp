@@ -1,0 +1,60 @@
+<!--pages/home/home.wxml-->
+<!-- 背景图 -->
+<view class="top_bg">
+	<image src="../images/daijia_mebg.jpg"></image>
+</view>
+
+<!-- 搜索框 -->
+<view class="search_box">
+	<!-- 当前城市 -->
+	<view class="city">
+		<image src="../images/location.png"></image>
+		<text>{{myCity}}</text>
+	</view>
+	<!-- 起点 -->
+	<view class="chooseLocation">
+		<image src="../images/starting.png"></image>
+		<input placeholder="输入起点" auto-height="true" value="{{StartAddress}}" style='color: #0080ff;' bindfocus="startFocus" bindinput="startInput"></input>
+	</view>
+	<!-- 终点 -->
+	<view class="chooseLocation">
+		<image src="../images/destination.png"></image>
+		<input placeholder="输入终点" auto-height="true" value="{{EndAddress}}" style='color: #0080ff;' bindfocus="endFocus" bindinput="endInput"></input>
+	</view>
+	<!-- 按钮 -->
+	<view class="btn" wx:if="{{Start && End}}">
+		<view class="btn_cancel" bindtap="cancel">取消</view>
+		<view class="btn_confirm" bindtap="confirm">确认</view>
+	</view>
+</view>
+
+
+<!-- 九宫格 -->
+<view class="sudoku_root">
+	<view class="sudoku_item" wx:if="{{validOrder}}" bindtap="validOrder">
+		<image class="sudoku_item_img" src="../images/homeOrder.png"></image>
+		<text class="sudoku_item_title">我的订单</text>
+	</view>
+	<view class="sudoku_item" wx:if="{{!validOrder&&!driverWork}}" bindtap="scanQr">
+		<image class="sudoku_item_img" src="../images/scanQr.png"></image>
+		<text class="sudoku_item_title">扫码下单</text>
+	</view>
+</view>
+
+<view class="sudoku_root" wx:if="{{driverWork}}">
+	<view class="sudoku_item" bindtap="driverWork">
+		<image wx:if="{{OrderWorking}}" class="working_img" src="../images/OrderWorking.png"></image>
+		<image wx:if="{{OrderReceiving}}" class="OrderTips_img" src="../images/OrderTips.png"></image>
+		<image class="sudoku_item_img" src="../images/driverWork.png"></image>
+		<text class="sudoku_item_title">{{OrderWorking == true ? '进行中' :'去接单'}}</text>
+	</view>
+	<view class="sudoku_item" bindtap="myQr">
+		<image class="sudoku_item_img" src="../images/myQr.png"></image>
+		<text class="sudoku_item_title">二维码</text>
+	</view>
+	<view class="sudoku_item">
+		<switch class="OnLine_switch" checked="{{OnLineSwitch}}" bindchange="OnLineBtn" />
+		<image class="OnLine_FQA_img" src="../images/FQA.png" bindtap="OnLineFQA"></image>
+		<view class="OnLine_title">{{OnLineSwitch == true ? '在线中' :'下线中'}}</view>
+	</view>
+</view>

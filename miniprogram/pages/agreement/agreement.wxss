@@ -1,0 +1,19 @@
+/* pages/agreement/agreement.wxss */
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 2;
+}
+.list-item {
+  color: #999999;
+  line-height: 2;
+  word-break: break-all;
+  padding: 0 20rpx;
+}
+.first-item1 {
+  margin-top: 50rpx;
+}
+.first-item2 {
+  margin-top: 150rpx;
+}

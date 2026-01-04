@@ -1,0 +1,53 @@
+<!--BackstagePackage/allDriverOrderDetail/allDriverOrderDetail.wxml-->
+<view wx:for="{{OrderInfo}}" wx:key="_id">
+	<view class="list_box" wx:if="{{item.DriverOpenId}}">
+		<view class="title">司机信息</view>
+		<view class="desc">司机：<text class="text_blue">{{item.Driver}}</text></view>
+		<view class="desc">驾龄：<text class="text_blue">{{item.DrivingAge}}</text></view>
+		<view class="desc">驾照：<text class="text_blue">{{item.Driving}}</text></view>
+		<view class="desc">接单时间：<text class="text_blue">{{item.OrderReceiveTime}}</text></view>
+		<view class="desc" wx:if="{{item.BeginCountTime}}">开始计时：<text class="text_blue">{{item.BeginCountTime}}</text></view>
+		<view class="desc" wx:if="{{item.EndCountTime}}">结束计时：<text class="text_blue">{{item.EndCountTime}}</text></view>
+	</view>
+
+	<view class="list_box">
+		<view class="title">订单信息</view>
+		<view class="desc" wx:if="{{item.Buyer}}">客户：<text class="text_blue">{{item.Buyer}}</text></view>
+		<view class="desc" wx:if="{{item.BuyerPhone}}">电话：<text class="text_blue">{{item.BuyerPhone}}</text></view>
+		<view class="desc">起点：<text class="text_blue">{{item.StartAddress}}</text></view>
+		<view class="desc">终点：<text class="text_blue">{{item.EndAddress}}</text></view>
+		<view class="desc">距离：<text class="text_blue">{{item.Distance}}</text>（Km）</view>
+		<view class="desc" wx:if="{{item.OrderType == 'timePrice'}}">用时：<text class="text_blue">{{item.SpendTime ? item.SpendTime : '00'}}</text>（分钟）</view>
+		<view class="desc">价格：<text class="text_blue">{{item.PaidPrice ? item.PaidPrice : '0.00'}}</text>（元）</view>
+		<view class="desc" wx:if="{{item.OrderPayer}}">创建者：<text class="text_blue">{{item.OrderPayer}}</text>（管理员）</view>
+		<text class="tips" wx:if="{{item.OrderType == 'timePrice'}}">[价格说明]：按时计费</text>
+		<text class="tips" wx:if="{{item.OrderType == 'fixedPrice'}}">[价格说明]：一口价</text>
+		<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+		<view class="desc" wx:if="{{item.OrderPayTime}}">完成时间：<text class="text_blue">{{item.OrderPayTime}}</text></view>
+		<view class="desc" wx:if="{{item.DriverCancelOrderTime || item.AdminCancelOrderTime}}">取消时间：
+			<text class="text_blue" wx:if="{{item.DriverCancelOrderTime}}">{{item.DriverCancelOrderTime}}</text>
+			<text class="text_blue" wx:if="{{item.AdminCancelOrderTime}}">{{item.AdminCancelOrderTime}}</text>
+		</view>
+		<view class="desc" wx:if="{{item.ValidOrder == true && item.OrderReceiving == true && item.DriverFinishOrder == false}}">订单状态：<text class="text_red">进行中</text></view>
+		<view class="desc" wx:if="{{item.ValidOrder == true && item.OrderReceiving == true && item.DriverFinishOrder == true}}">订单状态：<text class="text_green">已到达</text></view>
+		<view class="desc" wx:if="{{item.OrderPay == false}}">订单状态：<text class="text_red">未支付</text></view>
+		<view class="desc" wx:if="{{item.OrderPay == true}}">订单状态：<text class="text_green">已支付</text></view>
+		<view class="desc" wx:if="{{item.DriverCancelOrder == true}}">订单状态：<text class="text_red">司机已取消订单</text></view>
+		<view class="desc" wx:if="{{item.AdminCancelOrder == true}}">订单状态：<text class="text_red">管理员已取消订单</text></view>
+		<view class="desc" wx:if="{{item.AdminCancelOrder == true}}">取消者：<text class="text_red">{{item.AdminCancel}}</text>（管理员）</view>
+		<view class="desc" wx:if="{{item.FinishOrder == true && item.OrderPay == true && item.DriverFinishOrder == true}}">订单状态：<text class="text_green">已完成</text></view>
+	</view>
+</view>
+
+<view class="list_box" wx:if="{{OrderScore}}">
+	<!-- 评分 -->
+	<view class='score_box'>
+		<view>匿名评分：</view>
+		<view>
+			<block wx:for-items="{{score_img_arr}}" wx:for-item="img" wx:key="index">
+				<image data-score='{{index+1}}' src="{{img}}" />
+			</block>
+		</view>
+		<view class="score_text">{{score_text}}</view>
+	</view>
+</view>

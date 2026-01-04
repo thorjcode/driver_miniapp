@@ -1,0 +1,117 @@
+<!--pages/driverWork/driverWork.wxml-->
+<view class="list_box" wx:if="{{nohting}}">
+	<view class="desc" style="text-align: center;">暂时没有可接订单...</view>
+</view>
+
+<view wx:if="{{steps==2}}">
+	<view class="list_box">
+		<view decode="true" class="tips">[提示]：请仔细检查订单内容，如有疑问，请咨询客服。</view>
+	</view>
+	<view class="list_box" wx:for="{{OrderInfo}}" wx:key="_id">
+		<view class="title">订单信息</view>
+		<view class="desc">起点：<text class="text_blue">{{item.StartAddress}}</text></view>
+		<view class="desc">终点：<text class="text_blue">{{item.EndAddress}}</text></view>
+		<view class="desc">距离：<text class="text_blue">{{item.Distance}}</text>（Km）</view>
+		<view class="desc">价格：<text class="text_blue">{{item.OrderType == 'fixedPrice' ? item.PaidPrice :'按时计费'}}</text>（元）</view>
+		<text class="tips" wx:if="{{item.OrderType == 'timePrice'}}">[价格说明]：{{Minute}}分钟内{{Price}}元，超过{{Minute}}分钟后，每分钟{{AddPrice}}元</text>
+		<text class="tips" wx:if="{{item.OrderType == 'fixedPrice'}}">[价格说明]：一口价</text>
+		<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+	</view>
+	<view class="list_box">
+		<view class="title">与客户的距离</view>
+		<view class="desc">距离：<text class="text_blue">{{CustomerDistance}}</text>（Km）</view>
+	</view>
+	<!-- 同意协议 -->
+	<view class="list_box">
+		<view bindtap="OpenAgreement" class="openAgreementText">平台规则协议</view>
+		<view class="isAgreeBox" bindtap="agreement">
+			<image mode="widthFix" src="{{isAgree?'../images/checkbox2.png':'../images/checkbox.png'}}" style="width:36rpx;height:36rpx;"></image>
+			<view class="isAgreeText"> 是否已阅读平台服务协议，是否同意该协议</view>
+		</view>
+	</view>
+	<!-- 按钮 -->
+	<view class="list_box">
+		<view class="btn">
+			<view class="btn_cancel" bindtap="cancelTakeOrder">取消</view>
+			<view class="btn_confirm" bindtap="takeOrder">接单</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{steps==3}}" wx:for="{{OrderInfo}}" wx:key="_id">
+	<view class="list_box">
+		<view class="title">司机信息</view>
+		<view class="desc">司机：<text class="text_blue">{{item.Driver}}</text></view>
+		<view class="desc">电话：<text class="text_blue">{{item.DriverPhone}}</text></view>
+		<view class="desc">驾龄：<text class="text_blue">{{item.DrivingAge}}</text></view>
+		<view class="desc">驾照：<text class="text_blue">{{item.Driving}}</text></view>
+		<view class="desc">接单时间：<text class="text_blue">{{item.OrderReceiveTime}}</text></view>
+	</view>
+	<view class="list_box">
+		<view class="title">订单信息</view>
+		<view class="desc">客户：<text class="text_blue">{{item.Buyer}}</text></view>
+		<view class="desc" bindtap="CallPhone" data-phone="{{item.BuyerPhone}}">电话：<text class="text_blue">{{item.BuyerPhone}}</text>（点击拨打）</view>
+		<view class="desc">起点：<text class="text_blue">{{item.StartAddress}}</text></view>
+		<view class="desc">终点：<text class="text_blue">{{item.EndAddress}}</text></view>
+		<view class="desc">距离：<text class="text_blue">{{item.Distance}}</text>（Km）</view>
+		<view class="desc">价格：<text class="text_blue">{{item.OrderType == 'fixedPrice' ? item.PaidPrice :'按时计费'}}</text>（元）</view>
+		<text class="tips" wx:if="{{item.OrderType == 'timePrice'}}">[价格说明]：{{Minute}}分钟内{{Price}}元，超过{{Minute}}分钟后，每分钟{{AddPrice}}元</text>
+		<text class="tips" wx:if="{{item.OrderType == 'fixedPrice'}}">[价格说明]：一口价</text>
+		<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+	</view>
+
+	<view class="list_box">
+		<button type="primary" bindtap="navRoad">打开导航</button>
+		<text decode="true" class="tips">【提示】打开后请点击“去这里”，使用外部地图软件更精准</text>
+	</view>
+	<view class="list_box" wx:if="{{item.OrderType == 'fixedPrice' && item.DriverFinishOrder == false}}">
+		<view class="btn">
+			<view class="btn_cancel" bindtap="cancelFixedOrder">取消订单</view>
+			<view class="btn_confirm" bindtap="finishOrder">完成订单</view>
+		</view>
+	</view>
+
+	<view class="list_box" wx:if="{{item.OrderType == 'timePrice'}}">
+		<view class="title" style="text-align: center;">已接单，进行中...</view>
+		<view class="desc" style="text-align: center;">开始计时：<text class="text_blue">{{BeginCountTime ? BeginCountTime : '等待开始'}}</text></view>
+		<view class="desc" style="text-align: center;">结束计时：<text class="text_blue">{{EndCountTime ? EndCountTime :'等待结束'}}</text></view>
+		<view class="btn">
+			<view class="btn_cancel" bindtap="StopTimeBtn" wx:if="{{!ShowBeginBtn}}">{{CountTime == true ? '暂停计时' : '继续计时'}}</view>
+			<view class="btn_confirm" bindtap="StartTimeBtn" wx:if="{{ShowBeginBtn}}">开始计时</view>
+			<view class="btn_confirm" bindtap="AccountBtn" wx:if="{{!ShowBeginBtn&&!CountTime}}">结算价格</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{steps==4}}" wx:for="{{OrderInfo}}" wx:key="_id">
+	<view class="list_box">
+		<view class="title">司机信息</view>
+		<view class="desc">司机：<text class="text_blue">{{item.Driver}}</text></view>
+		<view class="desc">电话：<text class="text_blue">{{item.DriverPhone}}</text></view>
+		<view class="desc">驾龄：<text class="text_blue">{{item.DrivingAge}}</text></view>
+		<view class="desc">驾照：<text class="text_blue">{{item.Driving}}</text></view>
+		<view class="desc">接单时间：<text class="text_blue">{{item.OrderReceiveTime}}</text></view>
+	</view>
+
+	<view class="list_box">
+		<view class="title">订单信息</view>
+		<view class="desc">客户：<text class="text_blue">{{item.Buyer}}</text></view>
+		<view class="desc" bindtap="CallPhone" data-phone="{{item.BuyerPhone}}">电话：<text class="text_blue">{{item.BuyerPhone}}</text>（点击拨打）</view>
+		<view class="desc">起点：<text class="text_blue">{{item.StartAddress}}</text></view>
+		<view class="desc">终点：<text class="text_blue">{{item.EndAddress}}</text></view>
+		<view class="desc">距离：<text class="text_blue">{{item.Distance}}</text>（Km）</view>
+		<view class="desc" wx:if="{{item.OrderType == 'timePrice'}}">用时：<text class="text_blue">{{SpendTime ? SpendTime : '00'}}</text>（分钟）</view>
+		<view class="desc">价格：<text class="text_blue">{{PaidPrice ? PaidPrice : item.PaidPrice}}</text>（元）</view>
+		<text class="tips" wx:if="{{item.OrderType == 'timePrice'}}">[价格说明]：{{Minute}}分钟内{{Price}}元，超过{{Minute}}分钟后，每分钟{{AddPrice}}元</text>
+		<text class="tips" wx:if="{{item.OrderType == 'fixedPrice'}}">[价格说明]：一口价</text>
+		<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+	</view>
+
+	<view class="list_box" wx:if="{{item.OrderType =='timePrice' && item.DriverFinishOrder == false}}">
+		<view class="btn">
+			<view class="btn_cancel" bindtap="cancelTimeOrder">取消订单</view>
+			<view class="btn_confirm" bindtap="finishOrder">完成订单</view>
+		</view>
+	</view>
+
+</view>

@@ -1,0 +1,72 @@
+<!--BackstagePackage/allLiveOrderDetail/allLiveOrderDetail.wxml-->
+<view wx:for="{{OrderInfo}}" wx:key="_id">
+	<view class="list_box" wx:if="{{item.DriverOpenId}}">
+		<view class="title">司机信息</view>
+		<view class="desc">司机：<text class="text_blue">{{item.Driver}}</text></view>
+		<view class="desc" bindtap="CallPhone" data-phone="{{item.DriverPhone}}">电话：<text class="text_blue">{{item.DriverPhone}}</text>（点击拨打）</view>
+		<view class="desc">驾龄：<text class="text_blue">{{item.DrivingAge}}</text></view>
+		<view class="desc">驾照：<text class="text_blue">{{item.Driving}}</text></view>
+		<view class="desc">接单时间：<text class="text_blue">{{item.OrderReceiveTime}}</text></view>
+		<view class="desc" wx:if="{{item.BeginCountTime}}">开始计时：<text class="text_blue">{{item.BeginCountTime}}</text></view>
+		<view class="desc" wx:if="{{item.EndCountTime}}">结束计时：<text class="text_blue">{{item.EndCountTime}}</text></view>
+	</view>
+
+	<view class="list_box">
+		<view class="title">订单信息</view>
+		<view class="desc" wx:if="{{item.Buyer}}">客户：<text class="text_blue">{{item.Buyer}}</text></view>
+		<view class="desc" wx:if="{{item.BuyerPhone}}" bindtap="CallPhone" data-phone="{{item.BuyerPhone}}">电话：<text class="text_blue">{{item.BuyerPhone}}</text>（点击拨打）</view>
+		<view class="desc">起点：<text class="text_blue">{{item.StartAddress}}</text></view>
+		<view class="desc">终点：<text class="text_blue">{{item.EndAddress}}</text></view>
+		<view class="desc">距离：<text class="text_blue">{{item.Distance}}</text>（Km）</view>
+		<view class="desc" wx:if="{{item.OrderType == 'timePrice'}}">用时：<text class="text_blue">{{item.SpendTime ? item.SpendTime : '00'}}</text>（分钟）</view>
+		<view class="desc">价格：<text class="text_blue">{{item.PaidPrice ? item.PaidPrice : '0.00'}}</text>（元）</view>
+		<view class="desc" wx:if="{{item.OrderPayer}}">创建者：<text class="text_blue">{{item.OrderPayer}}</text>（管理员）</view>
+		<text class="tips" wx:if="{{item.OrderType == 'timePrice'}}">[价格说明]：按时计费</text>
+		<text class="tips" wx:if="{{item.OrderType == 'fixedPrice'}}">[价格说明]：一口价</text>
+		<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+		<view class="desc" wx:if="{{item.OrderPayTime}}">完成时间：<text class="text_blue">{{item.OrderPayTime}}</text></view>
+		<view class="desc" wx:if="{{item.DriverCancelOrderTime || item.AdminCancelOrderTime}}">取消时间：
+			<text class="text_blue" wx:if="{{item.DriverCancelOrderTime}}">{{item.DriverCancelOrderTime}}</text>
+			<text class="text_blue" wx:if="{{item.AdminCancelOrderTime}}">{{item.AdminCancelOrderTime}}</text>
+		</view>
+		<view class="desc" wx:if="{{item.ValidOrder == true && item.OrderReceiving == false}}">订单状态：<text class="text_red">等待中</text></view>
+		<view class="desc" wx:if="{{item.ValidOrder == true && item.OrderReceiving == true && item.DriverFinishOrder == false || item.FinishOrder == false}}">订单状态：<text class="text_red">进行中</text></view>
+		<view class="desc" wx:if="{{item.ValidOrder == true && item.OrderReceiving == true && item.DriverFinishOrder == true}}">订单状态：<text class="text_green">已到达</text></view>
+		<view class="desc" wx:if="{{item.OrderPay == false}}">订单状态：<text class="text_red">未支付</text></view>
+		<view class="desc" wx:if="{{item.OrderPay == true}}">订单状态：<text class="text_green">已支付</text></view>
+		<view class="desc" wx:if="{{item.ValidOrder == true && item.DriverFinishOrder == true && item.OrderPay == true && item.FinishOrder == false}}">订单状态：<text class="text_red">待完成</text></view>
+		<view class="desc" wx:if="{{item.DriverCancelOrder == true}}">订单状态：<text class="text_red">司机已取消订单</text></view>
+		<view class="desc" wx:if="{{item.AdminCancelOrder == true}}">订单状态：<text class="text_red">管理员已取消订单</text></view>
+		<view class="desc" wx:if="{{item.AdminCancelOrder == true}}">取消者：<text class="text_red">{{item.AdminCancel}}</text>（管理员）</view>
+	</view>
+	<!-- 按钮 -->
+	<view class="list_box" wx:if="{{item.ValidOrder == true && item.OrderReceiving == false}}">
+		<view class="btn">
+			<view class="btn_confirm" bindtap="RecDriverBtn">推荐司机</view>
+		</view>
+	</view>
+	<view class="list_box" wx:if="{{item.DriverFinishOrder == false}}">
+		<view class="btn">
+			<view class="btn_cancel" bindtap="cancelOrder">取消订单</view>
+		</view>
+	</view>
+</view>
+
+<view class="scroll_box" wx:if="{{RecDriver}}">
+	<scroll-view scroll-y="true" style="height: 720rpx;" bindscrolltolower="scrollonReachBottom">
+		<block wx:for="{{DriverList}}" wx:key="_id">
+			<view class="list_box">
+				<view bindtap="ChooseDriverBtn" data-id="{{item['_id']}}" data-openid="{{item['_openid']}}" data-name="{{item['name']}}" data-phone="{{item['phone']}}" data-driving="{{item['driving']}}" data-drivingage="{{item['drivingAge']}}">
+					<view class="desc">序号：{{index+1}}</view>
+					<view class="desc">司机：<text class="text_blue">{{item.name}}</text></view>
+					<view class="desc">驾龄：<text class="text_blue">{{item.drivingAge}}</text></view>
+					<view class="desc">驾照：<text class="text_blue">{{item.driving}}</text></view>
+					<view class="desc">评分：<text class="text_blue">{{item.score}}</text></view>
+					<view class="desc">状态：<text class="text_blue">{{item.online == true && item.working == true ? '工作中':'空闲中'}}</text></view>
+				</view>
+				<view class="desc" style="margin: 15rpx 0rpx 15rpx 0rpx;" bindtap="CallPhone" data-phone="{{item.phone}}">电话：<text class="text_blue">{{item.phone}}</text>（点击拨打）</view>
+				<text class="tips">[提示]：点击卡片选择推荐司机。</text>
+			</view>
+		</block>
+	</scroll-view>
+</view>

@@ -1,0 +1,29 @@
+/* BackstagePackage/driverHome/driverHome.wxss */
+/* 九宫格 */
+.sudoku_root{
+	padding: 20rpx 10rpx;
+	display: flex;
+	margin-top: 20rpx;
+	justify-content: space-around;
+}
+.sudoku_item{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	width: 215rpx;
+	height: 215rpx;
+	background-color: #fff;
+	border-radius: 20rpx;
+	vertical-align: middle;
+	align-items: center;
+	box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+}
+.sudoku_item_img{
+	width: 134rpx;
+	height: 134rpx;
+	margin-top: 10rpx;
+}
+.sudoku_item_title{
+	font-size: 35rpx;
+	margin-top: 10rpx;
+}

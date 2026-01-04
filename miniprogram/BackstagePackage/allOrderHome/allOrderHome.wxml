@@ -1,0 +1,22 @@
+<!--BackstagePackage/allOrderHome/allOrderHome.wxml-->
+<!-- 九宫格 -->
+<view class="sudoku_root">
+	<view class="sudoku_item" data-url="../allLiveOrder/allLiveOrder" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/jinxingzhong.png"></image>
+		<text class="sudoku_item_title">进行中</text>
+	</view>
+	<view class="sudoku_item" data-url="../allHisOrder/allHisOrder" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/yijieshu.png"></image>
+		<text class="sudoku_item_title">已结束</text>
+	</view>
+</view>
+<view class="sudoku_root">
+	<view class="sudoku_item" data-url="../createOrder/createOrder" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../../pages/images/fixedOrder.png"></image>
+		<text class="sudoku_item_title">创建订单</text>
+	</view>
+	<view class="sudoku_item" data-url="../allDriverList/allDriverList" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/order.png"></image>
+		<text class="sudoku_item_title">代驾订单</text>
+	</view>
+</view>

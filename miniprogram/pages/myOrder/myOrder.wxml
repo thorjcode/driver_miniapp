@@ -1,0 +1,92 @@
+<!--pages/myOrder/myOrder.wxml-->
+<!--导航条-->
+<view class="navbar_box">
+	<view class="navbar">
+		<lable wx:for="{{navbar}}" data-id="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+			<text>{{item}}</text>
+		</lable>
+	</view>
+</view>
+
+<!--等待中-->
+<view hidden="{{currentTab!==0}}" wx:for="{{OrdersList}}" wx:key="key">
+	<view wx:if="{{item.ValidOrder == true && item.OrderReceiving == false}}">
+		<!-- 数据列表 -->
+		<view class="list_box">
+			<view class="list_item" data-id="{{item['_id']}}" bindtap="Navigate">
+				<view class="desc">起点：{{item.StartAddress}}</view>
+				<view class="desc">终点：{{item.EndAddress}}</view>
+				<view class="desc">距离：{{item.Distance}}（Km）</view>
+				<view class="desc">价格：待结算（元）</view>
+				<view class="desc">订单状态：<text class="text_red">等待中</text></view>
+				<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+				<view class="desc text_springgreen">说明：点击卡片查看详情</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 进行中 -->
+<view hidden="{{currentTab!==1}}" wx:for="{{OrdersList}}" wx:key="key">
+	<view wx:if="{{item.ValidOrder == true && item.OrderReceiving == true}}">
+		<!-- 数据列表 -->
+		<view class="list_box">
+			<view class="list_item" data-id="{{item['_id']}}" bindtap="Navigate">
+				<view class="desc">起点：{{item.StartAddress}}</view>
+				<view class="desc">终点：{{item.EndAddress}}</view>
+				<view class="desc">距离：{{item.Distance}}（Km）</view>
+				<view class="desc">价格：待结算（元）</view>
+				<view class="desc">订单状态：<text class="text_red">进行中</text></view>
+				<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+				<view class="desc text_springgreen">说明：点击卡片查看详情</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 已取消 -->
+<view hidden="{{currentTab!==2}}" wx:for="{{OrdersList}}" wx:key="key">
+	<view wx:if="{{item.ValidOrder == false && item.CancelAwait == true  || item.DriverCancelOrder == true || item.AdminCancelOrder == true}}">
+		<!-- 数据列表 -->
+		<view class="list_box">
+			<view class="list_item" data-id="{{item['_id']}}" bindtap="Navigate">
+				<view class="desc">起点：{{item.StartAddress}}</view>
+				<view class="desc">终点：{{item.EndAddress}}</view>
+				<view class="desc">距离：{{item.Distance}}（Km）</view>
+				<view class="desc" wx:if="{{item.OrderType == 'timePrice'}}">用时：{{item.SpendTime ? item.SpendTime : '00'}}（分钟）</view>
+				<view class="desc">价格：{{item.PaidPrice ? item.PaidPrice : '0.00'}}（元）</view>
+				<view class="desc">订单状态：
+					<text class="text_red" wx:if="{{item.CancelAwait == true}}">用户已取消等待</text>
+					<text class="text_red" wx:if="{{item.DriverCancelOrder == true}}">司机已取消订单</text>
+					<text class="text_red" wx:if="{{item.AdminCancelOrder == true}}">管理员已取消订单</text>
+				</view>
+				<view class="desc">取消时间：
+					<text class="text_blue" wx:if="{{item.CancelAwaitTime}}">{{item.CancelAwaitTime}}</text>
+					<text class="text_blue" wx:if="{{item.DriverCancelOrderTime}}">{{item.DriverCancelOrderTime}}</text>
+					<text class="text_blue" wx:if="{{item.AdminCancelOrderTime}}">{{item.AdminCancelOrderTime}}</text>
+				</view>
+				<view class="desc text_springgreen">说明：点击卡片查看详情</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 已完成 -->
+<view hidden="{{currentTab!==3}}" wx:for="{{OrdersList}}" wx:key="key">
+	<view wx:if="{{item.ValidOrder == false && item.FinishOrder == true && item.OrderPay == true && item.DriverFinishOrder == true}}">
+		<!-- 数据列表 -->
+		<view class="list_box">
+			<view class="list_item" data-id="{{item['_id']}}" bindtap="Navigate">
+				<view class="desc">起点：{{item.StartAddress}}</view>
+				<view class="desc">终点：{{item.EndAddress}}</view>
+				<view class="desc">距离：{{item.Distance}}（Km）</view>
+				<view class="desc" wx:if="{{item.OrderType == 'timePrice'}}">用时：{{item.SpendTime ? item.SpendTime : '00'}}（分钟）</view>
+				<view class="desc">价格：{{item.PaidPrice ? item.PaidPrice : '0.00'}}（元）</view>
+				<view class="desc">订单状态：<text class="text_red">已完成</text></view>
+				<view class="desc">完成时间：<text class="text_blue">{{item.OrderPayTime}}</text></view>
+				<view class="desc text_springgreen">说明：点击卡片查看详情</view>
+			</view>
+		</view>
+	</view>
+</view>

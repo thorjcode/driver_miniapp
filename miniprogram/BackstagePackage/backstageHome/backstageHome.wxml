@@ -1,0 +1,28 @@
+<!--BackstagePackage/backstageHome/backstageHome.wxml-->
+<!-- 九宫格 -->
+<view class="sudoku_root">
+	<view class="sudoku_item" data-url="../driverHome/driverHome" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/driver.png"></image>
+		<text class="sudoku_item_title">代驾审核</text>
+	</view>
+	<view class="sudoku_item" data-url="../driverState/driverState" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/driverstate.png"></image>
+		<text class="sudoku_item_title">代驾状态</text>
+	</view>
+	<view class="sudoku_item" data-url="../allOrderHome/allOrderHome" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/order.png"></image>
+		<text class="sudoku_item_title">订单管理</text>
+	</view>
+</view>
+<view class="sudoku_root">
+	<view class="sudoku_item" data-url="../miniAppInfo/miniAppInfo" bindtap="Navigate" wx:if="{{superAdmin}}">
+		<image class="sudoku_item_img" src="../images/miniappInfo.png"></image>
+		<text class="sudoku_item_title">小程序</text>
+	</view>
+	<view class="sudoku_item" data-url="../adminList/adminList" bindtap="Navigate" wx:if="{{superAdmin}}">
+		<image class="sudoku_item_img" src="../images/admin.png"></image>
+		<text class="sudoku_item_title">管理员</text>
+	</view>
+</view>
+<!-- 底部标题 -->
+<view class="bottom_title">后台管理系统</view>

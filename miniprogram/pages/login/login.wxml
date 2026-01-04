@@ -1,0 +1,25 @@
+<!--pages/login/login.wxml-->
+<view class="main_box">
+    <view class="avatar_box">
+        <view class="avatar_item"><text>头像：</text></view>
+        <view class="avatar_item">
+            <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                <image class="avatar" src="{{avatarUrl != ''?avatarUrl:'../images/addheadimg.png'}}"></image>
+            </button>
+        </view>
+    </view>
+
+    <view class="nickname_box">
+        <view class="nickname_item"><text>昵称：</text></view>
+        <view class="nickname_item text_blue">
+            <input type="nickname" class="weui-input" placeholder="请输入昵称" value="{{nickName}}" bindinput="inputNickName" bindconfirm="inputNickName" />
+        </view>
+    </view>
+    <view class="tips text_tips_spring" wx:if="{{Registered}}">提示：如需修改信息，请先注销后重新登录即可</view>
+    <view class="login_btn">
+        <button type="primary" bindtap="SubmitBtn">{{Registered == true?'确认登录':'提交注册'}}</button>
+    </view>
+    <view class="login_btn">
+        <button type="warn" wx:if="{{Registered}}" bindtap="DeleteBtn">注销账号</button>
+    </view>
+</view>

@@ -1,0 +1,411 @@
+/* pages/driverApply/driverApply.wxss */
+a.headerline {
+    height: 10rpx;
+    width: 100vw;
+    background: #f8f8f8;
+}
+
+.verline {
+    width: 6rpx;
+    height: 30rpx;
+    background-color: #80B8F8;
+}
+
+.dfewa {
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Bold;
+    font-weight: 500;
+    text-align: left;
+    color: #333;
+}
+
+.gfera {
+    display: flex;
+    align-items: center;
+}
+
+.garagr {
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: center;
+    color: #1173e4;
+}
+
+.garagr,input {
+    font-size: 30rpx;
+}
+
+input {
+    text-align: left;
+    color: #333;
+    line-height: 84rpx;
+    height: 84rpx;
+}
+
+.bakdafe {
+    padding-left: 30rpx;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 84rpx;
+    border: 2rpx solid #dde2e9;
+    border-radius: 10rpx;
+}
+
+.eraea {
+    font-size: 24rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #80B8F8;
+}
+
+.geragre {
+    width: 90%;
+    margin: 60rpx auto;
+}
+
+.btnss,.geragre {
+    line-height: 84rpx;
+    height: 84rpx;
+    background: #1173e4;
+    border-radius: 8rpx;
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+.btnss {
+    width: 248rpx;
+}
+
+.deletimg {
+    width: 32rpx;
+    right: -16rpx;
+    top: -16rpx;
+    height: 32rpx;
+    position: absolute;
+}
+
+.imageItem {
+    position: relative;
+    margin-top: 30rpx;
+}
+
+.imagei,.imageItem {
+    width: 150rpx;
+    height: 150rpx;
+}
+
+.wesgfre {
+    width: 100%;
+    height: 144rpx;
+    background: #f8f8f8;
+    border-radius: 10rpx;
+}
+
+.gfeagea {
+    text-align: left;
+    margin-left: 20rpx;
+    color: #333;
+}
+
+.gfeagea,.greare {
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+}
+
+.greare {
+    width: 304rpx;
+    height: 84rpx;
+    background: #ececec;
+    border-radius: 8rpx;
+    line-height: 84rpx;
+    flex: 1;
+    text-align: center;
+    color: #80B8F8;
+}
+
+.jkgragr {
+    padding: 20rpx;
+    font-size: 24rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #f92626;
+}
+
+.goreagrah {
+    width: 100%;
+    height: 74rpx;
+    background: #fff5f5;
+    border-radius: 5px;
+}
+
+.jklgerage {
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: center;
+    color: #333;
+}
+
+.wgra {
+    width: 90%;
+    left: 5%;
+    height: 492rpx;
+}
+
+.igreagr {
+    margin-top: 60rpx;
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Bold;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+}
+
+.giroagr {
+    margin-top: 80rpx;
+    background: #1173e4;
+    color: #fff;
+}
+
+.giroagr,.giroagr2 {
+    width: 100%;
+    height: 84rpx;
+    line-height: 84rpx;
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: center;
+}
+
+.giroagr2 {
+    margin-top: 30rpx;
+    background: #ececec;
+    color: #1173e4;
+}
+
+.checkshilitucontainerview {
+    display: flex;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.checkshilitutitleview {
+    font-size: 24rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #80B8F8;
+}
+
+.checkshilituimageview {
+    width: 12rpx;
+    height: 18rpx;
+    opacity: 1;
+    margin-left: 8rpx;
+}
+
+.goumaipingzhenshilitucoverview {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.gmpzbackview,.gmpzbackviewsdadasd {
+    width: 670rpx;
+    opacity: 1;
+    background: #fff;
+    border-radius: 16rpx;
+    text-align: center;
+}
+
+.gmpzbackview {
+    height: 880rpx;
+}
+
+.gmpzTitleview {
+    text-align: center;
+}
+
+.gmpzimagetitleview,.gmpzTitleview {
+    margin-top: 34rpx;
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    color: #333;
+}
+
+.gmpzimagetitleview {
+    height: 70rpx;
+    opacity: 1;
+    text-align: left;
+    line-height: 70rpx;
+    margin-left: 60rpx;
+    margin-right: 60rpx;
+}
+
+.gmpztipstitleview {
+    font-size: 24rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: center;
+    color: #666;
+    margin-top: 18rpx;
+}
+
+.gmpzimageview {
+    width: 366rpx;
+    height: 274rpx;
+    opacity: 1;
+    margin-top: 22rpx;
+}
+
+.gmpzlineview {
+    width: 100%;
+    height: 2rpx;
+    opacity: 1;
+    background-color: #f1f1f1;
+    margin-top: 50rpx;
+}
+
+.gmpzclosebtnview {
+    width: 100%;
+    height: 100rpx;
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: center;
+    color: #80B8F8;
+    line-height: 100rpx;
+}
+
+.gmpzcoverview {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gmpzsltimageview {
+    width: 100%;
+    height: 400rpx;
+}
+
+.carinfotipsview {
+    margin-left: 40rpx;
+    margin-right: 40rpx;
+    margin-top: 10rpx;
+    padding: 30rpx 20rpx;
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #fa0;
+    background: #fffbf5;
+    border-radius: 10rpx;
+}
+
+.shangpaireasoncontainerview {
+    margin-left: 0rpx;
+    margin-right: 0rpx;
+    margin-top: 80rpx;
+    padding-bottom: 40rpx;
+    border-radius: 10rpx;
+    background-color: #fff;
+}
+
+.shangpaireasontitleview {
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #666;
+}
+
+.shangpaireasonview {
+    margin-left: 0rpx;
+    margin-right: 0rpx;
+    margin-top: 14rpx;
+    position: relative;
+    background: #f8f8f8;
+    border-radius: 10rpx;
+}
+
+.shangpaireasoninputview {
+    background: #f8f8f8;
+    font-size: 30rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #000;
+    height: 260rpx;
+    margin: 22rpx;
+    padding-top: 22rpx;
+}
+
+.reasonnumbercontainerview {
+    display: flex;
+    position: absolute;
+    right: 15rpx;
+    bottom: 15rpx;
+}
+
+.numbercontaview {
+    font-size: 24rpx;
+    font-family: PingFang SC,PingFang SC-Regular;
+    text-align: right;
+    color: #d1d1d1;
+}
+
+/* 显示车辆信息 */
+.carinfocontainerview {
+    margin-left: 24rpx;
+    margin-top: 24rpx;
+    margin-bottom: 24rpx;
+    margin-right: 24rpx;
+    background-color: #ffffff;
+    box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+    border-radius: 10rpx;
+}
+
+.carinfocontentcontainerview {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.carinfotitleview {
+    margin-left: 34rpx;
+    color: #666;
+    width: auto;
+}
+.carinfotitle{
+	margin: 20rpx;
+	color:green;
+	text-align: center;
+}
+.infoview{
+    margin-left: 8rpx;
+    color: #00bfff;
+    width: auto;
+}

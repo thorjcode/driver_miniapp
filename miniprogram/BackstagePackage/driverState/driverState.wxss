@@ -1,0 +1,42 @@
+/* BackstagePackage/driverState/driverState.wxss */
+/* 数据列表 */
+.list_box {
+	height: auto;
+	margin: 10rpx;
+	padding: 20rpx;
+	border-radius: 15rpx;
+	background-color: #fff;
+	box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+}
+
+.desc {
+	margin-top: 10rpx;
+	font-size: 15px;
+	color: white;
+}
+.desc_text{
+	font-size: 20px;
+	margin-right: 10rpx;
+}
+
+.text_green {
+	color: green;
+}
+
+.text_red {
+	color: red;
+}
+.text_orange{
+	color: orange;
+}
+
+.text_blue {
+	color: cornflowerblue;
+}
+
+.text_springgreen {
+	color: springgreen;
+}
+.text_gray{
+	color: gray;
+}

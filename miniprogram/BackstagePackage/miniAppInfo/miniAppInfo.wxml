@@ -1,0 +1,52 @@
+<!--BackstagePackage/miniAppInfo/miniAppInfo.wxml-->
+
+<view class="list_box">
+  <view class="desc">上次编辑：{{Editer}}</view>
+  <view class="desc">上次更新：{{UpdateTime}}</view>
+
+  <view class="title">服务城市</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置服务城市</view>
+  <view style="margin-top:15px;">
+    <textarea placeholder="选择城市" value='{{City}}' auto-height='true' bindtap="InputCity"></textarea>
+  </view>
+  <view class="title">设置服务分钟</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置服务分钟（分）</view>
+  <view style="margin-top:15px;">
+    <input type="number" value="{{Minute}}" maxlength="3" placeholder="输入时间" bindinput="InputMinute" />
+  </view>
+  <view class="title">设置超时价</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置超时价（分/元）</view>
+  <view style="margin-top:15px;">
+    <input type="number" value="{{AddPrice}}" maxlength="3" placeholder="输入价格" bindinput="InputAddPrice" />
+  </view>
+
+  <view class="title">设置晚时间段</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置晚时间段（时）</view>
+  <view style="margin-top:15px;">
+    <input type="number" value="{{NightTime}}" maxlength="3" placeholder="输入晚时间" bindinput="InputNightTime" />
+  </view>
+  <view class="title">设置晚间价格</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置晚间价格（元）</view>
+  <view style="margin-top:15px;">
+    <input type="number" value="{{NightPrice}}" maxlength="3" placeholder="输入价格" bindinput="InputNightPrice" />
+  </view>
+  <view class="title">设置早时间段</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置早时间段（时）</view>
+  <view style="margin-top:15px;">
+    <input type="number" value="{{MorningTime}}" maxlength="3" placeholder="输入早时间" bindinput="InputMorningTime" />
+  </view>
+  <view class="title">设置早间价格</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置早间价格（元）</view>
+  <view style="margin-top:15px;">
+    <input type="number" value="{{MorningPrice}}" maxlength="3" placeholder="输入价格" bindinput="InputMorningPrice" />
+  </view>
+
+  <view class="title">分成比例</view>
+  <view class="desc" style="color:#42A5F5;margin-top:10px;">请设置比例（%）</view>
+  <view style="margin-top:15px;">
+    <input type="number" value="{{Proportion}}" maxlength="3" placeholder="输入比例" bindinput="InputProTion" />
+  </view>
+
+</view>
+
+<view class="btn bg-green" bindtap="submitData">更新数据</view>

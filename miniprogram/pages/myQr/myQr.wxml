@@ -1,0 +1,8 @@
+<!--pages/myQr/myQr.wxml-->
+<!-- 二维码 -->
+<view class="Qr_box">
+    <view class="Qr_title">使用说明：请出示此二维码给客户扫码下单</view>
+    <!-- 二维码组件-->
+    <qrcode class="iblock" value="{{QRcodeData}}" width="400" wx:if="{{QrcodeStats}}"></qrcode>
+</view>
+

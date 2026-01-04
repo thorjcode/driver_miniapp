@@ -1,0 +1,102 @@
+<!--pages/scanQr/scanQr.wxml-->
+<view class="Scan_box" wx:if="{{steps == 1}}">
+	<view class="Scan_title">使用说明：请点击下面的扫码按钮，扫描二维码下单</view>
+	<view class="Scan_img">
+		<image src="../images/scanQr.png" bindtap="ScanQrCode"></image>
+	</view>
+</view>
+<view wx:if="{{steps == 2}}">
+	<!-- 代驾司机信息 -->
+	<view class="list_box" wx:for="{{DriverInfo}}" wx:key="_id">
+		<view class="title">司机信息</view>
+		<view class="desc">司机：<text class="text_blue">{{item.name}}</text></view>
+		<view class="desc">电话：<text class="text_blue">{{item.phone}}</text></view>
+		<view class="desc">驾龄：<text class="text_blue">{{item.drivingAge}}</text></view>
+		<view class="desc">驾照：<text class="text_blue">{{item.driving}}</text></view>
+		<view class="desc">综合评分：<text class="text_blue">{{item.score}}</text></view>
+	</view>
+
+	<view class="sudoku_root">
+		<view class="sudoku_item" bindtap="timeOrder">
+			<image class="sudoku_item_img" src="../images/timeOrder.png"></image>
+			<text class="sudoku_item_title">计时单</text>
+		</view>
+		<view class="sudoku_item" bindtap="fixedOrder">
+			<image class="sudoku_item_img" src="../images/fixedOrder.png"></image>
+			<text class="sudoku_item_title">一口价</text>
+		</view>
+	</view>
+
+</view>
+<view wx:if="{{steps == 3}}">
+	<view class="list_box">
+		<text decode="true" class="tips" wx:if="{{OrderType=='timePrice'}}">【提示】按时计费订单</text>
+		<text decode="true" class="tips" wx:if="{{OrderType=='fixedPrice'}}">【提示】一口价订单</text>
+	</view>
+	<view class="search_box">
+		<!-- 起点 -->
+		<view class="chooseLocation">
+			<image src="../images/starting.png"></image>
+			<input placeholder="输入起点" auto-height="true" value="{{StartAddress}}" style='color: #0080ff;' bindfocus="startFocus" bindinput="startInput"></input>
+		</view>
+		<!-- 终点 -->
+		<view class="chooseLocation">
+			<image src="../images/destination.png"></image>
+			<input placeholder="输入终点" auto-height="true" value="{{EndAddress}}" style='color: #0080ff;' bindfocus="endFocus" bindinput="endInput"></input>
+		</view>
+		<!-- 按钮 -->
+		<view class="btn" wx:if="{{Start && End}}">
+			<view class="btn_cancel" bindtap="cancel">取消</view>
+			<view class="btn_confirm" bindtap="confirm">确认</view>
+		</view>
+	</view>
+
+</view>
+
+<view wx:if="{{steps == 4}}">
+	<view class="list_box">
+		<text decode="true" class="tips">【提示】请仔细检查订单内容，如有疑问，请咨询客服。</text>
+	</view>
+	<!-- 代驾司机信息 -->
+	<view class="list_box" wx:for="{{DriverInfo}}" wx:key="_id">
+		<view class="title">司机信息</view>
+		<view class="desc">司机：<text class="text_blue">{{item.name}}</text></view>
+		<view class="desc">电话：<text class="text_blue">{{item.phone}}</text></view>
+		<view class="desc">驾龄：<text class="text_blue">{{item.drivingAge}}</text></view>
+		<view class="desc">驾照：<text class="text_blue">{{item.driving}}</text></view>
+		<view class="desc">综合评分：<text class="text_blue">{{item.score}}</text></view>
+	</view>
+	<view class="list_box">
+		<view class="title">订单信息</view>
+		<view class="desc">起点：<text class="text_blue">{{StartAddress}}</text></view>
+		<view class="desc">终点：<text class="text_blue">{{EndAddress}}</text></view>
+		<view class="desc">距离：<text class="text_blue">{{Distance}}</text>（Km）</view>
+		<view class="desc">价格：<text class="text_blue">{{OrderType == 'fixedPrice' ? PaidPrice :'按时计费'}}</text>（元）</view>
+		<text decode="true" class="tips" wx:if="{{OrderType == 'timePrice'}}">[价格说明]：{{Minute}}分钟内：{{Price}}（元），超过{{Minute}}分钟后，每分钟{{AddPrice}}（元）</text>
+		<text decode="true" class="tips" wx:if="{{OrderType == 'fixedPrice'}}">[价格说明]：一口价</text>
+	</view>
+	<view class="list_box">
+		<view class="title">联系电话</view>
+		<input placeholder="输入电话" type="number" maxlength="11" value="{{BuyerPhone}}" bindinput="inputPhone" style="color: cornflowerblue;"></input>
+	</view>
+	<view class="list_box" wx:if="{{OrderType=='fixedPrice'}}">
+		<view class="title">输入价格（元）</view>
+		<input placeholder="输入价格" type="number" maxlength="4" value="{{PaidPrice}}" bindinput="inputPrice" style="color: cornflowerblue;"></input>
+	</view>
+	<!-- 同意协议 -->
+	<view class="list_box">
+		<view bindtap="OpenAgreement" class="openAgreementText">平台规则协议</view>
+		<view class="isAgreeBox" bindtap="agreement">
+			<image mode="widthFix" src="{{isAgree?'../images/checkbox2.png':'../images/checkbox.png'}}" style="width:36rpx;height:36rpx;"></image>
+			<view class="isAgreeText"> 是否已阅读平台服务协议，是否同意该协议</view>
+		</view>
+	</view>
+
+	<!-- 按钮 -->
+	<view class="list_box">
+		<view class="btn">
+			<view class="btn_cancel" bindtap="cancelPlaceOrder">取消</view>
+			<view class="btn_confirm" bindtap="placeOrder">下单</view>
+		</view>
+	</view>
+</view>

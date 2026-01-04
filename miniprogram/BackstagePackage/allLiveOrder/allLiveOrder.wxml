@@ -1,0 +1,59 @@
+<!--BackstagePackage/allLiveOrder/allLiveOrder.wxml-->
+<!--导航条-->
+<view class="navbar_box">
+	<view class="navbar">
+		<lable wx:for="{{navbar}}" data-id="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+			<text>{{item}}</text>
+		</lable>
+	</view>
+</view>
+
+<!--等待中-->
+<view hidden="{{currentTab!==0}}" wx:for="{{OrdersList}}" wx:key="key">
+	<view wx:if="{{item.ValidOrder == true && item.OrderReceiving == false}}">
+		<!-- 数据列表 -->
+		<view class="list_box">
+			<view class="list_item" data-id="{{item['_id']}}" bindtap="Navigate">
+				<view class="desc">起点：{{item.StartAddress}}</view>
+				<view class="desc">终点：{{item.EndAddress}}</view>
+				<view class="desc">距离：{{item.Distance}}（Km）</view>
+				<view class="desc">价格：待结算（元）</view>
+				<view class="desc">订单状态：<text class="text_red">等待中</text></view>
+				<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+				<view class="desc text_springgreen">说明：点击卡片查看详情</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 进行中 -->
+<view hidden="{{currentTab!==1}}" wx:for="{{OrdersList}}" wx:key="key">
+	<view wx:if="{{item.ValidOrder == true && item.OrderReceiving == true}}">
+		<!-- 数据列表 -->
+		<view class="list_box">
+			<view class="list_item" data-id="{{item['_id']}}" bindtap="Navigate">
+				<view class="desc">起点：{{item.StartAddress}}</view>
+				<view class="desc">终点：{{item.EndAddress}}</view>
+				<view class="desc">距离：{{item.Distance}}（Km）</view>
+				<view class="desc">价格：待结算（元）</view>
+				<view class="desc" wx:if="{{item.ValidOrder == true && item.OrderReceiving == true && item.DriverFinishOrder == false || item.FinishOrder == false}}">订单状态：
+					<text class="text_red">进行中</text>
+				</view>
+				<view class="desc" wx:if="{{item.ValidOrder == true && item.DriverFinishOrder == true}}">订单状态：
+					<text class="text_green">已到达</text>
+				</view>
+				<view class="desc" wx:if="{{item.OrderPay == false}}">订单状态：
+					<text class="text_red">未支付</text>
+				</view>
+				<view class="desc" wx:if="{{item.OrderPay == true}}">订单状态：
+					<text class="text_green">已支付</text>
+				</view>
+				<view class="desc" wx:if="{{item.ValidOrder == true && item.DriverFinishOrder == true && item.OrderPay == true && item.FinishOrder == false}}">订单状态：
+					<text class="text_red">待完成</text>
+				</view>
+				<view class="desc">下单时间：<text class="text_blue">{{item.PlaceOrderTime}}</text></view>
+				<view class="desc text_springgreen">说明：点击卡片查看详情</view>
+			</view>
+		</view>
+	</view>
+</view>

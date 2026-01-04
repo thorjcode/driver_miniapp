@@ -1,0 +1,16 @@
+<!--BackstagePackage/allDriverList/allDriverList.wxml-->
+<!-- 数据列表 -->
+<view class="list_box">
+	<view class="list_item" wx:for="{{DriverList}}" wx:key='index' data-openid="{{item['_openid']}}" bindtap="Navigate">
+		<view class="desc">序号：<text class="text_red">{{index+1}}</text></view>
+		<view class="desc">姓名：<text class="text_blue">{{item.name}}</text></view>
+		<view class="desc">电话：<text class="text_blue">{{item.phone}}</text></view>
+		<view class="desc">余额：<text class="text_blue">{{item.wallet}}</text>（元）</view>
+		<view class="desc">单数：<text class="text_blue">{{item.finishOrder}}</text>（单）</view>
+		<view class="desc">评分：<text class="text_blue">{{item.score}}</text></view>
+		<view class="tips">[提示]：点击卡片查看详细信息</view>
+	</view>
+	<view class="list_item" wx:if='{{DriverList.length==0}}'>
+		<view class="desc" style="text-align: center;">暂时没有内容...</view>
+	</view>
+</view>

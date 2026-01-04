@@ -1,0 +1,22 @@
+<!--BackstagePackage/adminList/adminList.wxml-->
+<!-- 添加按钮 -->
+<view class="addAdmin">
+	<image src="../images/add.png" bindtap="addAdmin"></image>
+</view>
+
+<!-- 管理员列表 -->
+<view class="logged_box" wx:for="{{adminList}}" wx:key="index">
+	<view class="head_img">
+		<image bindtap="stagedoor" src="{{item.avatarUrl}}"></image>
+	</view>
+	<view class="user_info">
+		<view class="nickname">{{index+1}}、昵称：{{item.nickName}} </view>
+		<view class="user_type ">等级：<text class="level {{item.level == '2'?'color_2':'color_1'}}">({{item.level =='2'?'超级管理员':'普通管理员'}})</text></view>
+		<view class="user_type ">添加人：{{item.operator}}</view>
+		<view class="user_type ">添加时间：{{item.addAdminTime}}</view>
+		<view class="user_type text_red">说明：超级管理员有添加普通管理员的权限，普通管理员有进入小程序端后台系统权限，请谨慎操作！</view>
+		<view>管理员：
+			<switch data-id="{{item._id}}" data-level="{{item.level}}" checked="{{switchAdmin}}" bindchange="switchAdmin" />
+		</view>
+	</view>
+</view>

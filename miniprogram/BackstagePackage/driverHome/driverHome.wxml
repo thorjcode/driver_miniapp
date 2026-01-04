@@ -1,0 +1,12 @@
+<!--BackstagePackage/driverHome/driverHome.wxml-->
+<!-- 九宫格 -->
+<view class="sudoku_root">
+	<view class="sudoku_item" data-url="../driverAuditList/driverAuditList" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/daishenhe.png"></image>
+		<text class="sudoku_item_title">待审核</text>
+	</view>
+	<view class="sudoku_item" data-url="../driverApprovedList/driverApprovedList" bindtap="Navigate">
+		<image class="sudoku_item_img" src="../images/yishenhe.png"></image>
+		<text class="sudoku_item_title">已审核</text>
+	</view>
+</view>

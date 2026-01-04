@@ -1,0 +1,6 @@
+<!--pages/agreement/agreement.wxml-->
+<view class='title'>管理章程和委托代驾协议</view>
+
+<view class='list-item {{index === 0 ? "first-item1" : ""}}' wx:for='{{list1}}' wx:key="this">{{item}}</view>
+
+<view class='list-item {{index === 0 ? "first-item2" : ""}}' wx:for='{{list2}}' wx:key="this">{{item}}</view>

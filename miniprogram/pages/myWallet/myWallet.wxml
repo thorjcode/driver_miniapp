@@ -1,0 +1,38 @@
+<!--pages/myWallet/myWallet.wxml-->
+<view wx:for="{{DriverInfo}}" wx:key="_id" wx:if="{{!isShowInput}}">
+	<view class="list_box">
+		<view class="title">司机信息</view>
+		<view class="desc">司机：<text class="text_blue">{{item.name}}</text></view>
+		<view class="desc">电话：<text class="text_blue">{{item.phone}}</text></view>
+		<view class="desc">驾龄：<text class="text_blue">{{item.drivingAge}}</text></view>
+		<view class="desc">驾照：<text class="text_blue">{{item.driving}}</text></view>
+		<view class="desc">综合评分：<text class="text_blue">{{item.score}}</text></view>
+	</view>
+
+	<view class="list_box">
+		<view class="title">账户信息</view>
+		<view class="desc">订单总额：<text class="text_blue">{{item.wallet}}</text>（元）</view>
+		<view class="desc">完成单数：<text class="text_blue">{{item.finishOrder}}</text>（单）</view>
+		<view class="desc">可提金额：<text class="text_blue">{{ShowWallet}}</text>（元）</view>
+	</view>
+
+	<!-- 按钮 -->
+	<view class="btn">
+		<view class="btn_confirm" bindtap="cashBtn">提现</view>
+	</view>
+</view>
+
+
+<view class="list_box" wx:if="{{isShowInput}}">
+	<view class="title" style="text-align: center; color: cornflowerblue;">输入提现金额</view>
+	<input class="inputCash" type="number" placeholder="余额：{{ShowWallet}}（元）" value="{{CashNum}}" focus="true" bindinput="InputCash" />
+	<view class="btn">
+		<view class="btn_cancel" bindtap="cashCancelBtn">取消</view>
+		<view class="btn_confirm" bindtap="cashConfirmBtn">确认</view>
+	</view>
+</view>
+
+
+<view class="driverOrder_img">
+	<image bindtap="goDriverOrder" src="../images/order.png"></image>
+</view>

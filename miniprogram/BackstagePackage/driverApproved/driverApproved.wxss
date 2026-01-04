@@ -1,0 +1,74 @@
+/* BackstagePackage/driverApproved/driverApproved.wxss */
+
+
+  /* 列表 */
+  .list-box{
+    margin: 15rpx 30rpx;
+    border-radius: 15rpx;
+    padding: 25rpx;
+    background-color: #ffffff;
+  }
+  
+  .title{
+    margin-bottom: 20rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+  }
+  
+  .tips{
+    font-size: 30rpx;
+    color:rgb(33, 207, 111);
+  }
+  
+  .desc{
+    margin-top: 10rpx;
+    font-size: 30rpx;
+    color:grey;
+  }
+  
+  .text_red{
+    color: #e26843;
+  }
+  
+  .text_blue{
+    color: #0081ff;
+  }
+  
+  
+  .submit-btn {
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    margin: 30px 30px;
+    border-radius: 10rpx;
+    color: #fff;
+    background-color: #1989fa;
+  }
+  
+  .padding {
+    padding: 10rpx;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-direction {
+    flex-direction: column;
+  }
+  
+  
+  .submitbtn {
+    width: 100%;
+    color: #fff;
+    margin: 10px 0;
+  }
+  
+  .img{
+  width:100%;
+  }
+  
+  .padding-xs {
+  padding: 10rpx;
+  }
+  

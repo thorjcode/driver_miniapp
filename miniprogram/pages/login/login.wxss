@@ -1,0 +1,65 @@
+/* pages/login/login.wxss */
+.main_box {
+	margin: 20rpx;
+	border-radius: 30rpx;
+	background-color: #fff;
+	box-shadow: 4px 4px 8px rgba(141, 138, 138, 0.5);
+}
+
+.avatar_box {
+	display: flex;
+	margin: 10rpx;
+	padding: 20rpx;
+}
+
+.avatar_item {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.avatar_item button {
+	background-color: #fff;
+}
+
+.avatar {
+	width: 260rpx;
+	height: 250rpx;
+	border-radius: 30rpx;
+	box-shadow: 4px 4px 8px rgba(141, 138, 138, 0.5);
+}
+
+.nickname_box {
+	display: flex;
+	margin: 10rpx;
+	padding: 20rpx;
+	border-bottom: 1px #42A5F5 solid;
+}
+
+.nickname_item {
+	justify-items: center;
+	flex-direction: column;
+}
+
+.login_btn {
+	margin: 10rpx;
+	padding: 20rpx;
+}
+
+.login_btn button {
+	box-shadow: 4px 4px 8px rgba(141, 138, 138, 0.5);
+}
+
+/* 提示信息 */
+.tips {
+	margin: 10rpx;
+	font-size: 12px;
+}
+
+.text_tips_spring {
+	color: rgb(33, 207, 111);
+}
+
+.text_tips_red {
+	color: #EE0A24;
+}

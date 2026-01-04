@@ -1,0 +1,18 @@
+<!--BackstagePackage/driverRepulse/driverRepulse.wxml-->
+<!-- 列表 -->
+<view class="card" wx:if='{{!nothing}}' wx:for='{{DataList}}' wx:key="index">
+	<view class="info_box">
+		<view class="info_name">序号：{{index+1}}</view>
+        <view class="info_note ">姓名：<text style="color: violet;">{{item.name}}</text></view>
+        <view class="info_note ">电话：<text style="color: red;">{{item.phone}}</text></view>
+        <view class="info_note ">打回原因：<text style="color: red;">{{item.RepulseCause}}</text></view>
+		<view class="info_note ">打回时间：<text style="color: sienna;">{{item.RepulseTime}}</text></view>
+        <view class="info_tip">说明：被打回用户重新申请后将自动消失！</view>
+	</view>
+</view>
+
+<view class="list_box" wx:if='{{nothing}}'>
+  <view class="list_item">
+    <view class="desc" style="text-align: center;">没有被打回的数据！</view>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+/* BackstagePackage/allDriverList/allDriverList.wxss */
+  /* 列表 */
+  .list_box{
+	margin-top: 10rpx;
+  }
+  .list_item {
+	height: auto;
+	margin: 20rpx;
+	padding: 20rpx;
+	border-radius: 15rpx;
+	background-color: #fff;
+	box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+}
+  .title{
+    margin-bottom: 20rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+  }
+  
+  .tips{
+    font-size: 12px;
+    color: rgb(33, 207, 111);
+  }
+  
+  .desc{
+    margin-top: 10rpx;
+    font-size: 30rpx;
+    color:grey;
+  }
+  
+  .text_red{
+    color: #e26843;
+  }
+  
+  .text_blue{
+    color: #0081ff;
+  }
+
+  

@@ -1,0 +1,79 @@
+<!--BackstagePackage/createOrder/createOrder.wxml-->
+<view wx:if="{{steps == 1}}">
+	<view class="list_box">
+		<text decode="true" class="tips">[提示]：管理员创建一口价订单，请先与购买者商议好！再创建订单！</text>
+	</view>
+	<!-- 搜索框 -->
+	<view class="search_box">
+		<!-- 起点 -->
+		<view class="chooseLocation">
+			<image src="../../pages/images/starting.png"></image>
+			<input placeholder="输入起点" auto-height="true" value="{{StartAddress}}" style='color: #0080ff;' bindfocus="startFocus" bindinput="startInput"></input>
+		</view>
+		<!-- 终点 -->
+		<view class="chooseLocation">
+			<image src="../../pages/images/destination.png"></image>
+			<input placeholder="输入终点" auto-height="true" value="{{EndAddress}}" style='color: #0080ff;' bindfocus="endFocus" bindinput="endInput"></input>
+		</view>
+		<!-- 按钮 -->
+		<view class="btn" wx:if="{{Start && End}}">
+			<view class="btn_cancel" bindtap="cancel">取消</view>
+			<view class="btn_confirm" bindtap="confirm">确认</view>
+		</view>
+	</view>
+</view>
+<view wx:if="{{steps == 2}}">
+	<view class="list_box">
+		<text decode="true" class="tips">【提示】请仔细检查订单内容，如有疑问，请咨询客服。</text>
+	</view>
+	<view class="list_box">
+		<view class="title">订单信息</view>
+		<view class="desc">起点：<text class="text_blue">{{StartAddress}}</text></view>
+		<view class="desc">终点：<text class="text_blue">{{EndAddress}}</text></view>
+		<view class="desc">距离：<text class="text_blue">{{Distance}}</text>（Km）</view>
+		<view class="desc">价格：<text class="text_blue">{{PaidPrice}}</text>（元）</view>
+		<text decode="true" class="tips">[价格说明]：一口价</text>
+	</view>
+	<view class="list_box">
+		<view class="title">联系电话</view>
+		<input placeholder="输入电话" type="number" maxlength="11" value="{{BuyerPhone}}" bindinput="inputPhone" style="color: cornflowerblue;"></input>
+	</view>
+	<view class="list_box">
+		<view class="title">输入价格（元）</view>
+		<view class="inputPrice">
+			<input placeholder="输入价格" type="number" maxlength="4" value="{{PaidPrice}}" bindinput="inputPrice" style="color: cornflowerblue;"></input>
+		</view>
+		<text decode="true" class="tips">[提示]：请创建者先向购买者确认已支付，此处填写购买者支付的费用</text>
+	</view>
+
+	<!-- 同意协议 -->
+	<view class="list_box">
+		<view bindtap="OpenAgreement" class="openAgreementText">平台规则协议</view>
+		<view class="isAgreeBox" bindtap="agreement">
+			<image mode="widthFix" src="{{isAgree?'../../pages/images/checkbox2.png':'../../pages/images/checkbox.png'}}" style="width:36rpx;height:36rpx;"></image>
+			<view class="isAgreeText"> 是否已阅读平台服务协议，是否同意该协议</view>
+		</view>
+	</view>
+</view>
+
+<view class="scroll_box" wx:if="{{RecDriver}}">
+	<scroll-view scroll-y="true" style="height: 720rpx;" bindscrolltolower="scrollonReachBottom">
+		<block wx:for="{{DriverList}}" wx:key="_id">
+			<view class="list_box">
+				<view bindtap="ChooseDriverBtn" data-id="{{item['_id']}}" data-openid="{{item['_openid']}}" data-name="{{item['name']}}" data-phone="{{item['phone']}}" data-driving="{{item['driving']}}" data-drivingage="{{item['drivingAge']}}">
+					<view class="desc">序号：{{index+1}}</view>
+					<view class="desc">司机：<text class="text_blue">{{item.name}}</text></view>
+					<view class="desc">驾龄：<text class="text_blue">{{item.drivingAge}}</text></view>
+					<view class="desc">驾照：<text class="text_blue">{{item.driving}}</text></view>
+					<view class="desc">评分：<text class="text_blue">{{item.score}}</text></view>
+					<view class="desc">状态：<text class="text_blue">{{item.online == true && item.working == true ? '工作中':'空闲中'}}</text></view>
+				</view>
+				<view class="desc" style="margin: 15rpx 0rpx 15rpx 0rpx;" bindtap="CallPhone" data-phone="{{item.phone}}">电话：<text class="text_blue">{{item.phone}}</text>（点击拨打）</view>
+				<text class="tips">[提示]：点击卡片选择推荐司机。</text>
+			</view>
+		</block>
+		<view class="list_box" wx:if="{{DriverList.length==0}}">
+			<view class="desc" style="text-align: center;">暂时没有可推荐的司机</view>
+		</view>
+	</scroll-view>
+</view>

@@ -1,0 +1,19 @@
+<!--BackstagePackage/addAdmin/addAdmin.wxml-->
+<!-- 普通用户列表 -->
+<view class="logged_box" wx:for="{{UserList}}" wx:key="index">
+	<view class="head_img">
+		<image bindtap="stagedoor" src="{{item.avatarUrl}}"></image>
+	</view>
+	<view class="user_info">
+		<view class="nickname">{{index+1}}、昵称：{{item.nickName}}</view>
+		<view class="user_type">注册时间：{{item.registerTime}}</view>
+		<view class="user_type text_red">说明：此次添加为普通管理员身份，请谨慎添加！</view>
+		<view>管理员：
+			<switch data-id="{{item._id}}" checked="{{switch}}" bindchange="addAdmin" />
+		</view>
+	</view>
+</view>
+
+<view class="nohting" wx:if="{{total == ''}}">
+	<view >暂时没有可添加的用户！</view>
+</view>

@@ -1,0 +1,170 @@
+/* pages/home/home.wxss */
+/* 背景图 */
+.top_bg {
+	width: 100%;
+	height: 400rpx;
+	margin-bottom: 20rpx;
+	overflow: hidden;
+	border-radius: 0rpx 0rpx 30rpx 30rpx;
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.top_bg image {
+	width: 100%;
+	height: 100%;
+
+}
+
+/* 搜索框 */
+.search_box {
+	z-index: 2;
+	margin: 20rpx;
+	margin-bottom: 20rpx;
+	border-radius: 16rpx;
+	background-color: #fff;
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* 当前城市 */
+.city {
+	margin: 30rpx 10rpx;
+}
+
+.city image {
+	width: 40rpx;
+	height: 40rpx;
+	margin: 0rpx 20rpx 0rpx 20rpx;
+}
+
+.city text {
+	font-size: 12px;
+	color: gray;
+}
+
+/* 选择位置 */
+.chooseLocation {
+	margin: 30rpx;
+}
+
+.chooseLocation image {
+	width: 90rpx;
+	height: 90rpx;
+}
+
+.chooseLocation input {
+	float: right;
+	width: 80%;
+	height: 90rpx;
+	line-height: 90rpx;
+	border-bottom: #0080ff solid 1px;
+}
+
+/* 按钮 */
+.btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: 20rpx;
+}
+
+.btn_cancel {
+	width: 40%;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	border-radius: 16rpx;
+	color: white;
+	background-color: crimson;
+	box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+
+}
+
+.btn_confirm {
+	width: 40%;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	border-radius: 16rpx;
+	color: white;
+	background-color: limegreen;
+	box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+
+}
+
+/* 九宫格 */
+.sudoku_root {
+	margin-top: 30rpx;
+	display: flex;
+	justify-content: space-around;
+}
+
+.sudoku_item {
+	position: relative;
+	width: 220rpx;
+	height: 220rpx;
+	margin: 20rpx;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 20rpx;
+	vertical-align: middle;
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.sudoku_item_img {
+	z-index: 0;
+	margin: 10rpx;
+	align-items: center;
+	width: 140rpx;
+	height: 140rpx;
+}
+
+.sudoku_item_title {
+	z-index: 0;
+	margin: 10rpx;
+	text-align: center;
+	font-size: 15px;
+}
+
+/* 订单提示 */
+.OrderTips_img {
+	z-index: 1;
+	position: absolute;
+	top: 5rpx;
+	left: 165rpx;
+	width: 50rpx;
+	height: 50rpx;
+}
+
+/* 工作中 */
+.working_img {
+	z-index: 1;
+	position: absolute;
+	top: 5rpx;
+	left: 5rpx;
+	width: 80rpx;
+	height: 80rpx;
+}
+
+/* 上线按钮 */
+.OnLine_switch {
+	margin: 10rpx;
+	align-items: center;
+	width: 140rpx;
+	height: 140rpx;
+}
+
+.OnLine_FQA_img {
+	margin: 10rpx;
+	align-items: center;
+	width: 50rpx;
+	height: 80rpx;
+}
+
+.OnLine_title {
+	margin: 10rpx;
+	text-align: center;
+	font-size: 15px;
+}

@@ -1,0 +1,20 @@
+<!--BackstagePackage/driverState/driverState.wxml-->
+<!-- 数据列表 -->
+<block wx:for="{{DriverList}}" wx:key='index'>
+	<view class="list_box" style="background-color: {{item.forbidden ? 'red': item.online == true && item.working == false ? 'green': item.online == true && item.working == true ? 'orange': item.online == false && item.working == false ? 'gray':''}}">
+		<view class="desc">序号：{{index+1}}</view>
+		<view class="desc">姓名：{{item.name}}</view>
+		<view class="desc" bindtap="CallPhone" data-phone="{{item.phone}}">电话：{{item.phone}}（点击拨打）</view>
+		<view class="desc">驾照：{{item.driving}}</view>
+		<view class="desc">驾龄：{{item.drivingAge}}</view>
+		<view class="desc">状态：
+			<text class="desc_text" wx:if="{{item.forbidden}}">已禁用</text>
+			<text class="desc_text" wx:if="{{item.forbidden == false && item.online == true && item.working == false}}">空闲中</text>
+			<text class="desc_text" wx:if="{{item.forbidden == false && item.online == true && item.working == true}}">工作中</text>
+			<text class="desc_text" wx:if="{{item.forbidden == false && item.online == false && item.working == false}}">已下线</text>
+		</view>
+	</view>
+	<view class="list_box" wx:if='{{DriverList.length==0}}'>
+		<view class="desc" style="text-align: center;">暂时没有数据内容...</view>
+	</view>
+</block>

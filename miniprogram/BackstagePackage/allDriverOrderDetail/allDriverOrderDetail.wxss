@@ -1,0 +1,103 @@
+/* BackstagePackage/allDriverOrderDetail/allDriverOrderDetail.wxss */
+.list_box {
+	margin: 15rpx 30rpx;
+	border-radius: 15rpx;
+	padding: 25rpx;
+	background-color: #ffffff;
+}
+
+.title {
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 20rpx;
+}
+
+.tips {
+	font-size: 12px;
+	color: rgb(33, 207, 111);
+}
+
+.desc {
+	margin-top: 15rpx;
+	font-size: 14px;
+	color: grey;
+}
+
+/* 地图 */
+.map{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 50%;
+	height: 50%;
+  }
+  .map map{
+	  width: 50%;
+	  height: 50vh;
+  }
+
+/* 按钮 */
+.btn {
+	display: flex;
+	flex-direction: row;
+	justify-content:space-around;
+	margin: 20rpx;
+}
+
+.btn_cancel {
+	width: 40%;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	border-radius: 16rpx;
+	box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+
+}
+.btn_confirm {
+	width: 40%;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	border-radius: 16rpx;
+	box-shadow: 20rpx 20rpx 10rpx rgba(39, 48, 57, 0.05);
+
+}
+
+.text_green {
+	color: green;
+}
+
+.text_red {
+	color: red;
+}
+
+.text_blue {
+	color: cornflowerblue;
+}
+
+.text_springgreen {
+	color: springgreen;
+}
+
+
+/* 评分 */
+
+.score_box {
+  height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score_box image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+}
+
+.score_text {
+  width: 150rpx;
+  text-align: center;
+  color: #b0b0b0;
+}
